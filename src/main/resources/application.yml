@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:mysql://common101.my.2dfire-daily.com:3306/presell?useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true
+    username: presell
+    password: presell@552208
+    driver-class-name: com.mysql.jdbc.Driver
+  jmx:
+    enabled: false
+code:
+  schema: presell
+  pojoPkg: test
+  mapperPkg: test
+  tableName: presell_stock
+  pojoName: test
+  mapperName: test
+  typesMap:
+    Long-INTEGER: BIGINT,INT,INTEGER
+    java.math.BigDecimal-DECIMAL: DOUBLE,FLOAT,DECIMAL,NUMERIC
+    String-VARCHAR: VARCHAR,NVARCHAR,LONGTEXT,TEXT
+logging:
+  level:
+    root: error
+
+
