@@ -15,8 +15,6 @@ import java.util.Map;
 @Component
 public class EntityTask extends AbstractTaskNode{
     
-    
-    
     @Resource
     private CodePreperties codePreperties;
     
@@ -25,24 +23,23 @@ public class EntityTask extends AbstractTaskNode{
         Map<String, Object> map = this.buildContext(table);
         // entity
         String name = table.getJavaName();
-        if (codePreperties.getPojoName()!=null){
-            name=codePreperties.getPojoName();
-        }else {
-            codePreperties.setPojoName(name);
-        }
-        name=name + ".java";
+        codePreperties.setPojoName(name);
+        name=name + "DO.java";
         String content = codeService.executeTemplate(codePreperties.getTemplateEntity(), map);
         CodeFile entityFile = new JavaCodeFile(codePreperties.getPojoPkg(), name, content);
         // mapper
         String mapperName=table.getJavaName();
-        if (codePreperties.getMapperName()!=null){
-            mapperName=codePreperties.getPojoName();
-        }else {
-            codePreperties.setMapperName(mapperName);
-        }
+        codePreperties.setMapperName(mapperName);
+        String finalName=mapperName;
         mapperName=mapperName + "Mapper.xml";
+        content = codeService.executeTemplate(codePreperties.getTemplateMapperXml(), map);
+        CodeFile mappeXmlFile = new JavaCodeFile(codePreperties.getMapperPkg() , mapperName, content);
+        name=finalName + "Mapper.java";
         content = codeService.executeTemplate(codePreperties.getTemplateMapper(), map);
-        CodeFile mapperFile = new JavaCodeFile(codePreperties.getMapperPkg() , mapperName, content);
-        return Arrays.asList(entityFile, mapperFile);
+        CodeFile mapperFile = new JavaCodeFile(codePreperties.getMapperPkg() , name, content);
+        name=finalName + "DAO.java";
+        content = codeService.executeTemplate(codePreperties.getTemplateDAO(), map);
+        CodeFile daoFile = new JavaCodeFile(codePreperties.getMapperPkg() , name, content);
+        return Arrays.asList(entityFile, mapperFile,mappeXmlFile,daoFile);
     }
 }

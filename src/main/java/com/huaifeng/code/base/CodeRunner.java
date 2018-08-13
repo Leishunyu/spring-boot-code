@@ -40,8 +40,7 @@ public class CodeRunner implements ApplicationRunner {
     
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("hello");
-        System.out.println("启动成功了，准备关闭");
+        System.out.println("启动成功了");
         Map<String,TableWapper> tableMap= baseFacade.getTables(codePreperties.getTableName(),codePreperties.getSchema());
         System.out.println("Tables: " + Arrays.asList(tableMap));
         List<CodeFile> filelist = codeService.gencode(tableMap);

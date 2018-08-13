@@ -1,80 +1,54 @@
-<?xml version="1.0" encoding="UTF-8" ?>   
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="${config.mapperPkg}">
+package ${config.mapperPkg}.mapper;
 
-	<!-- 插入实体 -->
-	<insert id="insert" parameterType="${config.pojoPkg}.${config.pojoName}">
-		INSERT INTO ${table.name} (
-		<#list table.columns as column>
-		   	${column.name}<#if column_has_next>,</#if>
-		</#list>
-		) VALUES (
-		<#list table.columns as column>
-		   	${"#"}{${column.javaName},jdbcType=${column.jdbcType}}<#if column_has_next>,</#if>
-		</#list>
-		)
-		<selectKey databaseId="mysql" keyProperty="id" order="AFTER" resultType="long">
-			SELECT LAST_INSERT_ID() AS ID
-		</selectKey>
-		<selectKey databaseId="oracle" keyProperty="id" order="BEFORE" resultType="long">
-			SELECT SEQ_${table.name}.nextval as id FROM dual
-		</selectKey>
-	</insert>
+import ${config.pojoPkg}.${config.pojoName}DO;
+import org.springframework.stereotype.Repository;
 
-	<!-- 更新实体 -->
-	<update id="update" parameterType="${config.pojoPkg}.${config.pojoName}">
-		UPDATE ${table.name}
-		<set>
-		<#assign versionFlag = false />
-		<#list table.columns as column>
-		<#if column.name != 'ID'>
-			<#if column.name == 'version' || column.name == 'VERSION'>
-			<#assign versionFlag = true />
-			<#else>
-			<if test="${column.javaName} != null">
-				${column.name} = ${"#"}{${column.javaName},jdbcType=${column.jdbcType}},
-			</if>
-			</#if>
-		</#if>
-		</#list>
-		</set>
-		WHERE ID = ${"#"}{id,jdbcType=INTEGER} 
-	</update>
+import java.lang.Long;
+import java.util.List;
 
-	<!-- 删除实体 -->
-	<delete id="deleteEntity" parameterType="${config.pojoPkg}.${config.pojoName}">
-		DELETE FROM ${table.name} WHERE ID = ${"#"}{id,jdbcType=INTEGER}
-	</delete>
+/**
+ * ${config.pojoName} - Mapper接口
+ *
+ * @author huaifeng
+ */
+@Repository
+public interface ${config.pojoName}Mapper {
 
-	<!-- 查询字段 -->
-	<sql id="selectFieldSQL">
-		SELECT 
-		<#list table.columns as column>
-		       ${column.name} ${column.javaName}<#if column_has_next>,</#if>
-		</#list>
-	</sql>
+    /**
+     * ${config.pojoName} - 添加
+     *
+     * @param ${config.pojoName} - DO实体
+     * @return 添加结果
+     */
+    int insert(${config.pojoName}DO ${(config.pojoName+"DO")?uncap_first});
 
-	<!-- 查询 -->
-	<select id="get" parameterType="map" resultType="${config.pojoPkg}.${config.pojoName}">
-		<include refid="selectFieldSQL" />
-		  FROM ${table.name}
-		 WHERE ID = ${"#"}{id,jdbcType=INTEGER}
-	</select>
+    /**
+     * ${config.pojoName} - 修改
+     *
+     * @param ${config.pojoName}DO - DO实体
+     * @return 修改结果
+     */
+    int update(${config.pojoName}DO ${(config.pojoName+"DO")?uncap_first});
 
-	<!-- 查询 -->
-	<select id="find" parameterType="${config.pojoPkg}.${config.pojoName}" resultType="${config.pojoPkg}.${config.pojoName}">
-		<include refid="selectFieldSQL" />
-		  FROM ${table.name}
-		<where>
-			<if test="id != null">
-				AND ID = ${"#"}{id,jdbcType=INTEGER}
-			</if>
-		<#list table.columns as column>
-			<if test="${column.javaName} != null<#if column.stringType> and ${column.javaName} != ''</#if>">
-				AND ${column.name} = ${"#"}{${column.javaName},jdbcType=${column.jdbcType}}
-			</if>
-		</#list>
-		</where>
-	</select>
+    /**
+     * ${config.pojoName} - 删除
+     *
+     * @param ${config.pojoName}DO - DO实体
+     * @return 删除结果
+     */
+    int delete(Long <#list table.columns as column><#if column_index==0>${column.javaName}</#if></#list>);
 
-</mapper>   
+    /**
+     * 根据PK查询
+     *
+     * @return ${config.pojoName}DO
+     */
+    ${config.pojoName}DO get(Long <#list table.columns as column><#if column_index==0>${column.javaName}</#if></#list>);
+
+    /**
+     * 查询
+     *
+     * @return ${config.pojoName}DO列表
+     */
+    List<${config.pojoName}DO> findAll(${config.pojoName}DO ${(config.pojoName+"DO")?uncap_first});
+}

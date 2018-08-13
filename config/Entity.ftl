@@ -1,33 +1,27 @@
 package ${config.pojoPkg};
 
+import com.dfire.soa.consumer.activity.presell.domain.base.Base;
+import lombok.Data;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 /**
- * 实体对象：${table.comment!}
+ * ${config.pojoName}
+ *
+ * @author huaifeng
+ * @since 2018-04-26
  */
-public class ${config.pojoName} {
+@Data
+public class ${config.pojoName}DO extends Base{
 
 	private static final long serialVersionUID = ${serialVersionUID};
-
-	// ~~~~实体属性
 <#list table.columns as column>
 <#--//如果需要过滤某些字段(继承公共父类等，可配置该项)-->
 <#--<#if column.view>-->
-	// ${column.comment}
+	/**
+	 *${column.comment}
+	 */
 	private ${column.javaType} ${column.javaName};
-<#--</#if>-->
-</#list>
-
-<#list table.columns as column>
-<#--//如果需要过滤某些字段(继承公共父类等，可配置该项)-->
-<#--<#if column.view>-->
-	//get/set
-
-	public ${column.javaType} get${(column.javaName)?cap_first!}() {
-		return this.${column.javaName};
-	}
-
-	public void set${(column.javaName)?cap_first!}(${column.javaType} ${column.javaName}) {
-		this.${column.javaName} = ${column.javaName};
-	}
 <#--</#if>-->
 </#list>
 }

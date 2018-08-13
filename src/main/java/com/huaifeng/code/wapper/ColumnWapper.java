@@ -24,7 +24,7 @@ public class ColumnWapper implements Wapper<Column> {
 	}
 
 	public String getName() {
-		return column.getName();
+		return column.getName().toLowerCase();
 	}
 
 	public Long getOrdinal() {

@@ -1,24 +1,21 @@
 spring:
   datasource:
-    url: jdbc:mysql://******
-    username: root
-    password: 123456
+    url: jdbc:mysql://common101.my.2dfire-daily.com:3306/presell?useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true
+    username: presell
+    password: presell@552208
     driver-class-name: com.mysql.jdbc.Driver
   jmx:
     enabled: false
 code:
   schema: presell
-  pojoPkg: test
-  mapperPkg: test
-  tableName: presell_stock
-  pojoName: test
-  mapperName: test
+  mapperPkg: com.dfire.soa.consumer.activity.presell.dao
+  pojoPkg: com.dfire.soa.consumer.activity.presell.domain
+  tableName: presell_recommend_stock_total
   typesMap:
     Long-INTEGER: BIGINT,INT,INTEGER
+    int-TINYINT: TINYINT
     java.math.BigDecimal-DECIMAL: DOUBLE,FLOAT,DECIMAL,NUMERIC
     String-VARCHAR: VARCHAR,NVARCHAR,LONGTEXT,TEXT
 logging:
   level:
     root: error
-
-

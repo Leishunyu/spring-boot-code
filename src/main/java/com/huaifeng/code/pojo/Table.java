@@ -33,7 +33,7 @@ public class Table {
     private Column primaryKey;
     
     public void addColumn(Column column) {
-        this.columns.put(column.getName().toUpperCase(), column);
+        this.columns.put(column.getName().toLowerCase(), column);
     }
     
     @Override

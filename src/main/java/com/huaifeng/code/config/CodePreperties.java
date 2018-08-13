@@ -67,7 +67,17 @@ public class CodePreperties {
     private String templateEntity="Entity.ftl";
     
     /**
+     * templateMapperXml
+     */
+    private String templateMapperXml="EntityMapperXml.ftl";
+    
+    /**
      * templateMapper
      */
     private String templateMapper="EntityMapper.ftl";
+    
+    /**
+     * templateDAO
+     */
+    private String templateDAO="EntityDAO.ftl";
 }

@@ -2,18 +2,13 @@ package com.huaifeng.code.freemarker;
 
 import com.huaifeng.code.config.CodePreperties;
 import com.huaifeng.code.pojo.CodeFile;
-import com.huaifeng.code.pojo.Table;
 import com.huaifeng.code.task.EntityTask;
 import com.huaifeng.code.wapper.TableWapper;
-import com.sun.tools.javac.jvm.Code;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.freemarker.FreeMarkerConfigurationFactory;
-import org.springframework.ui.freemarker.FreeMarkerConfigurationFactoryBean;
-import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
-import org.springframework.util.ClassUtils;
 import org.springframework.util.ResourceUtils;
 import org.springframework.util.StringUtils;
 
