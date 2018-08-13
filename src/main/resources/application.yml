@@ -13,7 +13,7 @@ code:
   tableName: presell_recommend_stock_total
   typesMap:
     Long-INTEGER: BIGINT,INT,INTEGER
-    int-TINYINT: TINYINT
+    Integer-TINYINT: TINYINT
     java.math.BigDecimal-DECIMAL: DOUBLE,FLOAT,DECIMAL,NUMERIC
     String-VARCHAR: VARCHAR,NVARCHAR,LONGTEXT,TEXT
 logging:
