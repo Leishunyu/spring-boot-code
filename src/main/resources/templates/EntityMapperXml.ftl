@@ -37,7 +37,7 @@
         <where>
             is_valid = 1
 			<#list table.columns as column>
-				<#if column.javaName!="IsValid" && column.javaName!="opTime" && column.javaName!="createTime">
+				<#if column.javaName!="IsValid" && column.javaName!="opTime" && column.javaName!="createTime" && column.javaName!="lastVer">
 				<if test="${column.javaName} != null<#if column.stringType> and ${column.javaName} != ''</#if>">
                     and ${column.name} = ${"#"}{${column.javaName}}
                 </if>
