@@ -12,8 +12,8 @@ code:
   pojoPkg: com.dfire.soa.consumer.activity.presell.domain
   tableName: presell_recommend_stock_total
   typesMap:
-    Long-INTEGER: BIGINT,INT,INTEGER
-    int-TINYINT: TINYINT
+    Long-Long: BIGINT,INTEGER
+    Integer-TINYINT: TINYINT,INT
     java.math.BigDecimal-DECIMAL: DOUBLE,FLOAT,DECIMAL,NUMERIC
     String-VARCHAR: VARCHAR,NVARCHAR,LONGTEXT,TEXT
 logging:
