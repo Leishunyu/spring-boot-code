@@ -33,10 +33,10 @@ public class EntityTask extends AbstractTaskNode{
         String finalName=mapperName;
         mapperName=mapperName + "Mapper.xml";
         content = codeService.executeTemplate(codePreperties.getTemplateMapperXml(), map);
-        CodeFile mappeXmlFile = new JavaCodeFile(codePreperties.getMapperPkg() , mapperName, content);
+        CodeFile mappeXmlFile = new JavaCodeFile(codePreperties.getMapperPkg()+".xml" , mapperName, content);
         name=finalName + "Mapper.java";
         content = codeService.executeTemplate(codePreperties.getTemplateMapper(), map);
-        CodeFile mapperFile = new JavaCodeFile(codePreperties.getMapperPkg() , name, content);
+        CodeFile mapperFile = new JavaCodeFile(codePreperties.getMapperPkg()+".mapper" , name, content);
         name=finalName + "DAO.java";
         content = codeService.executeTemplate(codePreperties.getTemplateDAO(), map);
         CodeFile daoFile = new JavaCodeFile(codePreperties.getMapperPkg() , name, content);

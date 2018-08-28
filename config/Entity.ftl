@@ -1,15 +1,13 @@
 package ${config.pojoPkg};
 
-import com.dfire.soa.consumer.activity.presell.domain.base.Base;
+import ${config.pojoPkg}.base.Base;
 import lombok.Data;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * ${config.pojoName}
  *
  * @author huaifeng
- * @since 2018-04-26
+ * @since 2018-08-30
  */
 @Data
 public class ${config.pojoName}DO extends Base{
