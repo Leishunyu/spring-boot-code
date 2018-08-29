@@ -10,7 +10,7 @@ code:
   schema: presell_guard
   mapperPkg: com.dfire.soa.guard.presell.dao
   pojoPkg: com.dfire.soa.guard.presell.domain
-  tableName: user_role,menu,role_menu,user_menu,market_user,role
+  tableName: spread_feedback
   typesMap:
     Long-Long: BIGINT,INTEGER
     Integer-TINYINT: TINYINT,INT
