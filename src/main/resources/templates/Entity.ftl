@@ -7,7 +7,7 @@ import lombok.Data;
  * ${config.pojoName}
  *
  * @author huaifeng
- * @since 2018-08-30
+ * @since 2018-09-30
  */
 @Data
 public class ${config.pojoName}DO extends Base{

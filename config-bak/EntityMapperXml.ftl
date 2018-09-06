@@ -63,7 +63,7 @@
     ${table.name?lower_case}
         <set>
 			<#list table.columns as column>
-                <#if column_index != 0 && column.name!="last_ver" >
+                <#if column_index != 0 && column.name!="last_ver" && column.name!="is_valid">
 				<if test="${column.javaName} != null">
                     ${column.name} = ${"#"}{${column.javaName}},
                 </if>
